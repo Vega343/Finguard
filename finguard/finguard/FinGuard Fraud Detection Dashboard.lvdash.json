@@ -1,0 +1,1895 @@
+{
+  "datasets": [
+    {
+      "name": "customers",
+      "displayName": "Customer Data",
+      "config": {
+        "version": "1.1",
+        "source": "finguard.silver.customers",
+        "dimensions": [
+          {
+            "name": "customer_id",
+            "expr": "customer_id"
+          },
+          {
+            "name": "first_name",
+            "expr": "first_name"
+          },
+          {
+            "name": "last_name",
+            "expr": "last_name"
+          },
+          {
+            "name": "gender",
+            "expr": "gender"
+          },
+          {
+            "name": "age",
+            "expr": "age"
+          },
+          {
+            "name": "city",
+            "expr": "city"
+          },
+          {
+            "name": "state",
+            "expr": "state"
+          },
+          {
+            "name": "country",
+            "expr": "country"
+          },
+          {
+            "name": "customer_segment",
+            "expr": "customer_segment"
+          },
+          {
+            "name": "account_open_date",
+            "expr": "account_open_date"
+          },
+          {
+            "name": "risk_score",
+            "expr": "risk_score"
+          },
+          {
+            "name": "preferred_city",
+            "expr": "preferred_city"
+          },
+          {
+            "name": "preferred_country",
+            "expr": "preferred_country"
+          },
+          {
+            "name": "trusted_device_id",
+            "expr": "trusted_device_id"
+          },
+          {
+            "name": "card_number",
+            "expr": "card_number"
+          },
+          {
+            "name": "card_type",
+            "expr": "card_type"
+          },
+          {
+            "name": "email",
+            "expr": "email"
+          },
+          {
+            "name": "risk_score_bucket",
+            "expr": "CASE WHEN risk_score < 25 THEN '0-25' WHEN risk_score < 50 THEN '25-50' WHEN risk_score < 75 THEN '50-75' ELSE '75-100' END"
+          }
+        ],
+        "measures": [
+          {
+            "name": "customer_count",
+            "expr": "COUNT(1)"
+          },
+          {
+            "name": "avg_risk_score",
+            "expr": "AVG(risk_score)"
+          },
+          {
+            "name": "avg_annual_income",
+            "expr": "AVG(annual_income)",
+            "format": {
+              "type": "currency",
+              "currencyCode": "INR",
+              "decimalPlaces": {
+                "type": "exact",
+                "places": 2.0
+              }
+            }
+          },
+          {
+            "name": "total_transaction_limit",
+            "expr": "SUM(transaction_limit)",
+            "format": {
+              "type": "currency",
+              "currencyCode": "INR",
+              "decimalPlaces": {
+                "type": "exact",
+                "places": 2.0
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "fraud_watchlist",
+      "displayName": "Fraud Watchlist",
+      "config": {
+        "version": "1.1",
+        "source": "finguard.silver.fraud_watchlist",
+        "dimensions": [
+          {
+            "name": "watchlist_id",
+            "expr": "watchlist_id"
+          },
+          {
+            "name": "watch_type",
+            "expr": "watch_type"
+          },
+          {
+            "name": "entity_id",
+            "expr": "entity_id"
+          },
+          {
+            "name": "risk_level",
+            "expr": "risk_level"
+          },
+          {
+            "name": "action",
+            "expr": "action"
+          },
+          {
+            "name": "reason_code",
+            "expr": "reason_code"
+          },
+          {
+            "name": "reason_description",
+            "expr": "reason_description"
+          },
+          {
+            "name": "status",
+            "expr": "status"
+          },
+          {
+            "name": "effective_from",
+            "expr": "effective_from"
+          },
+          {
+            "name": "reported_by",
+            "expr": "reported_by"
+          },
+          {
+            "name": "reported_source",
+            "expr": "reported_source"
+          },
+          {
+            "name": "country",
+            "expr": "country"
+          },
+          {
+            "name": "city",
+            "expr": "city"
+          },
+          {
+            "name": "source_file",
+            "expr": "source_file"
+          }
+        ],
+        "measures": [
+          {
+            "name": "watchlist_count",
+            "expr": "COUNT(1)"
+          }
+        ]
+      }
+    },
+    {
+      "name": "high_value_alerts",
+      "displayName": "High Value Transaction Alerts",
+      "config": {
+        "version": "1.1",
+        "source": "finguard.gold.high_value_transactions_alert",
+        "dimensions": [
+          {
+            "name": "alert_id",
+            "expr": "alert_id"
+          },
+          {
+            "name": "alert_type",
+            "expr": "alert_type"
+          },
+          {
+            "name": "alert_timestamp",
+            "expr": "alert_timestamp"
+          },
+          {
+            "name": "transaction_id",
+            "expr": "transaction_id"
+          },
+          {
+            "name": "customer_id",
+            "expr": "customer_id"
+          },
+          {
+            "name": "customer_email",
+            "expr": "customer_email"
+          },
+          {
+            "name": "customer_name",
+            "expr": "customer_name"
+          },
+          {
+            "name": "currency",
+            "expr": "currency"
+          },
+          {
+            "name": "merchant_name",
+            "expr": "merchant_name"
+          },
+          {
+            "name": "merchant_category",
+            "expr": "merchant_category"
+          },
+          {
+            "name": "transaction_type",
+            "expr": "transaction_type"
+          },
+          {
+            "name": "payment_channel",
+            "expr": "payment_channel"
+          },
+          {
+            "name": "city",
+            "expr": "city"
+          },
+          {
+            "name": "country",
+            "expr": "country"
+          },
+          {
+            "name": "is_international",
+            "expr": "is_international"
+          },
+          {
+            "name": "transaction_timestamp",
+            "expr": "transaction_timestamp"
+          },
+          {
+            "name": "status",
+            "expr": "status"
+          },
+          {
+            "name": "transaction_amount",
+            "expr": "transaction_amount"
+          },
+          {
+            "name": "transaction_limit",
+            "expr": "transaction_limit"
+          }
+        ],
+        "measures": [
+          {
+            "name": "alert_count",
+            "expr": "COUNT(1)"
+          },
+          {
+            "name": "total_transaction_amount",
+            "expr": "SUM(transaction_amount)",
+            "format": {
+              "type": "currency",
+              "currencyCode": "INR",
+              "decimalPlaces": {
+                "type": "exact",
+                "places": 2.0
+              }
+            }
+          },
+          {
+            "name": "total_transaction_limit",
+            "expr": "SUM(transaction_limit)",
+            "format": {
+              "type": "currency",
+              "currencyCode": "INR",
+              "decimalPlaces": {
+                "type": "exact",
+                "places": 2.0
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "fraud_alerts",
+      "displayName": "Fraud Card Alerts",
+      "config": {
+        "version": "1.1",
+        "source": "finguard.gold.fraud_card_alert",
+        "dimensions": [
+          {
+            "name": "alert_id",
+            "expr": "alert_id"
+          },
+          {
+            "name": "alert_type",
+            "expr": "alert_type"
+          },
+          {
+            "name": "alert_timestamp",
+            "expr": "alert_timestamp"
+          },
+          {
+            "name": "transaction_id",
+            "expr": "transaction_id"
+          },
+          {
+            "name": "customer_id",
+            "expr": "customer_id"
+          },
+          {
+            "name": "customer_email",
+            "expr": "customer_email"
+          },
+          {
+            "name": "customer_name",
+            "expr": "customer_name"
+          },
+          {
+            "name": "card_number",
+            "expr": "card_number"
+          },
+          {
+            "name": "currency",
+            "expr": "currency"
+          },
+          {
+            "name": "merchant_id",
+            "expr": "merchant_id"
+          },
+          {
+            "name": "merchant_name",
+            "expr": "merchant_name"
+          },
+          {
+            "name": "merchant_category",
+            "expr": "merchant_category"
+          },
+          {
+            "name": "transaction_type",
+            "expr": "transaction_type"
+          },
+          {
+            "name": "payment_channel",
+            "expr": "payment_channel"
+          },
+          {
+            "name": "device_id",
+            "expr": "device_id"
+          },
+          {
+            "name": "transaction_city",
+            "expr": "transaction_city"
+          },
+          {
+            "name": "transaction_country",
+            "expr": "transaction_country"
+          },
+          {
+            "name": "transaction_timestamp",
+            "expr": "transaction_timestamp"
+          },
+          {
+            "name": "is_international",
+            "expr": "is_international"
+          },
+          {
+            "name": "transaction_status",
+            "expr": "transaction_status"
+          },
+          {
+            "name": "watchlist_id",
+            "expr": "watchlist_id"
+          },
+          {
+            "name": "watch_type",
+            "expr": "watch_type"
+          },
+          {
+            "name": "risk_level",
+            "expr": "risk_level"
+          },
+          {
+            "name": "action",
+            "expr": "action"
+          },
+          {
+            "name": "reason_code",
+            "expr": "reason_code"
+          },
+          {
+            "name": "reason_description",
+            "expr": "reason_description"
+          },
+          {
+            "name": "watchlist_effective_from",
+            "expr": "watchlist_effective_from"
+          },
+          {
+            "name": "reported_by",
+            "expr": "reported_by"
+          },
+          {
+            "name": "reported_source",
+            "expr": "reported_source"
+          },
+          {
+            "name": "watchlist_city",
+            "expr": "watchlist_city"
+          },
+          {
+            "name": "watchlist_country",
+            "expr": "watchlist_country"
+          },
+          {
+            "name": "amount",
+            "expr": "amount"
+          }
+        ],
+        "measures": [
+          {
+            "name": "total_amount",
+            "expr": "SUM(amount)",
+            "format": {
+              "type": "currency",
+              "currencyCode": "INR",
+              "decimalPlaces": {
+                "type": "exact",
+                "places": 2.0
+              }
+            }
+          },
+          {
+            "name": "alert_count",
+            "expr": "COUNT(1)"
+          },
+          {
+            "name": "high_risk_alert_count",
+            "expr": "COUNT(1) FILTER (WHERE risk_level = 'HIGH')"
+          }
+        ]
+      }
+    },
+    {
+      "name": "transactions",
+      "displayName": "Transaction Stream",
+      "config": {
+        "version": "1.1",
+        "source": "SELECT *, CAST(transaction_timestamp AS TIMESTAMP) AS txn_time FROM finguard.silver.transcational_stream\n",
+        "dimensions": [
+          {
+            "name": "transaction_id",
+            "expr": "transaction_id"
+          },
+          {
+            "name": "customer_id",
+            "expr": "customer_id"
+          },
+          {
+            "name": "card_number",
+            "expr": "card_number"
+          },
+          {
+            "name": "merchant_id",
+            "expr": "merchant_id"
+          },
+          {
+            "name": "merchant_name",
+            "expr": "merchant_name"
+          },
+          {
+            "name": "merchant_category",
+            "expr": "merchant_category"
+          },
+          {
+            "name": "currency",
+            "expr": "currency"
+          },
+          {
+            "name": "transaction_type",
+            "expr": "transaction_type"
+          },
+          {
+            "name": "payment_channel",
+            "expr": "payment_channel"
+          },
+          {
+            "name": "device_id",
+            "expr": "device_id"
+          },
+          {
+            "name": "city",
+            "expr": "city"
+          },
+          {
+            "name": "country",
+            "expr": "country"
+          },
+          {
+            "name": "is_international",
+            "expr": "is_international"
+          },
+          {
+            "name": "status",
+            "expr": "status"
+          },
+          {
+            "name": "txn_time",
+            "expr": "txn_time"
+          }
+        ],
+        "measures": [
+          {
+            "name": "transaction_count",
+            "expr": "COUNT(1)"
+          },
+          {
+            "name": "total_amount",
+            "expr": "SUM(amount)",
+            "format": {
+              "type": "currency",
+              "currencyCode": "INR",
+              "decimalPlaces": {
+                "type": "exact",
+                "places": 2.0
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "relationshipGraphs": [
+    {
+      "sources": [
+        {
+          "name": "Customer_Data",
+          "datasetName": "customers"
+        },
+        {
+          "name": "Fraud_Watchlist",
+          "datasetName": "fraud_watchlist"
+        },
+        {
+          "name": "High_Value_Transaction_Alerts",
+          "datasetName": "high_value_alerts"
+        },
+        {
+          "name": "Fraud_Card_Alerts",
+          "datasetName": "fraud_alerts"
+        },
+        {
+          "name": "Transaction_Stream",
+          "datasetName": "transactions"
+        }
+      ],
+      "relationships": [
+        {
+          "name": "relationship_0",
+          "from": "Fraud_Card_Alerts",
+          "to": "Customer_Data",
+          "on": "`Fraud_Card_Alerts`.`customer_id` = `Customer_Data`.`customer_id`",
+          "cardinality": "CARDINALITY_MANY_TO_ONE"
+        }
+      ],
+      "measureExpressions": [
+        {
+          "name": "fraud_alerts_per_customer",
+          "expression": "COUNT(`Fraud_Card_Alerts`.`alert_id`)"
+        }
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "705e797d",
+      "displayName": "Fraud Alert Overview",
+      "layout": [
+        {
+          "widget": {
+            "name": "kpi_total_alerts",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "measure(Fraud_Card_Alerts__alert_count)",
+                      "expression": "MEASURE(`Fraud_Card_Alerts`.`alert_count`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Total Fraud Alerts"
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "measure(Fraud_Card_Alerts__alert_count)",
+                  "rowNumber": 0
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 3,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "kpi_total_amount",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "measure(Fraud_Card_Alerts__total_amount)",
+                      "expression": "MEASURE(`Fraud_Card_Alerts`.`total_amount`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Total Fraud Amount"
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "measure(Fraud_Card_Alerts__total_amount)",
+                  "rowNumber": 0
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 0,
+            "width": 3,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "kpi_high_risk",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "measure(Fraud_Card_Alerts__high_risk_alert_count)",
+                      "expression": "MEASURE(`Fraud_Card_Alerts`.`high_risk_alert_count`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "High-Risk Alerts"
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "measure(Fraud_Card_Alerts__high_risk_alert_count)",
+                  "rowNumber": 0
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 0,
+            "width": 3,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "kpi_high_value",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "measure(High_Value_Transaction_Alerts__alert_count)",
+                      "expression": "MEASURE(`High_Value_Transaction_Alerts`.`alert_count`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "High-Value Alerts"
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "measure(High_Value_Transaction_Alerts__alert_count)",
+                  "rowNumber": 0
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 9,
+            "y": 0,
+            "width": 3,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "bar_risk_level",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "Fraud_Card_Alerts__risk_level",
+                      "expression": "`Fraud_Card_Alerts`.`risk_level`"
+                    },
+                    {
+                      "name": "measure(Fraud_Card_Alerts__alert_count)",
+                      "expression": "MEASURE(`Fraud_Card_Alerts`.`alert_count`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Fraud Alerts by Risk Level"
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Fraud_Card_Alerts__risk_level",
+                  "displayName": "risk_level",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "measure(Fraud_Card_Alerts__alert_count)",
+                  "displayName": "alert_count",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "Fraud_Card_Alerts__risk_level",
+                  "displayName": "risk_level",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 3,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "pie_payment_channel",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "measure(Fraud_Card_Alerts__alert_count)",
+                      "expression": "MEASURE(`Fraud_Card_Alerts`.`alert_count`)"
+                    },
+                    {
+                      "name": "Fraud_Card_Alerts__payment_channel",
+                      "expression": "`Fraud_Card_Alerts`.`payment_channel`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Fraud Alerts by Payment Channel"
+              },
+              "version": 3,
+              "widgetType": "pie",
+              "encodings": {
+                "angle": {
+                  "fieldName": "measure(Fraud_Card_Alerts__alert_count)",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "displayName": "alert_count"
+                },
+                "color": {
+                  "fieldName": "Fraud_Card_Alerts__payment_channel",
+                  "displayName": "payment_channel",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 3,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "bar_merchant_category",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "Fraud_Card_Alerts__merchant_category",
+                      "expression": "`Fraud_Card_Alerts`.`merchant_category`"
+                    },
+                    {
+                      "name": "measure(Fraud_Card_Alerts__alert_count)",
+                      "expression": "MEASURE(`Fraud_Card_Alerts`.`alert_count`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Fraud Alerts by Merchant Category"
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Fraud_Card_Alerts__merchant_category",
+                  "displayName": "merchant_category",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "measure(Fraud_Card_Alerts__alert_count)",
+                  "displayName": "alert_count",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "Fraud_Card_Alerts__merchant_category",
+                  "displayName": "merchant_category",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 9,
+            "width": 12,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "transaction_monitoring",
+      "displayName": "Transaction Monitoring",
+      "layout": [
+        {
+          "widget": {
+            "name": "line_txn_volume",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "hourly(Transaction_Stream__txn_time)",
+                      "expression": "DATE_TRUNC(\"HOUR\", `Transaction_Stream`.`txn_time`)"
+                    },
+                    {
+                      "name": "measure(Transaction_Stream__transaction_count)",
+                      "expression": "MEASURE(`Transaction_Stream`.`transaction_count`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Transaction Volume Over Time"
+              },
+              "version": 3,
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "hourly(Transaction_Stream__txn_time)",
+                  "displayName": "Hour",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "fieldName": "measure(Transaction_Stream__transaction_count)",
+                  "displayName": "transaction_count",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "pie_status",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "measure(Transaction_Stream__transaction_count)",
+                      "expression": "MEASURE(`Transaction_Stream`.`transaction_count`)"
+                    },
+                    {
+                      "name": "Transaction_Stream__status",
+                      "expression": "`Transaction_Stream`.`status`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Transaction Status Distribution"
+              },
+              "version": 3,
+              "widgetType": "pie",
+              "encodings": {
+                "angle": {
+                  "fieldName": "measure(Transaction_Stream__transaction_count)",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "displayName": "transaction_count"
+                },
+                "color": {
+                  "fieldName": "Transaction_Stream__status",
+                  "displayName": "status",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 6,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "pie_international",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "measure(Transaction_Stream__transaction_count)",
+                      "expression": "MEASURE(`Transaction_Stream`.`transaction_count`)"
+                    },
+                    {
+                      "name": "Transaction_Stream__is_international",
+                      "expression": "`Transaction_Stream`.`is_international`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "International vs Domestic"
+              },
+              "version": 3,
+              "widgetType": "pie",
+              "encodings": {
+                "angle": {
+                  "fieldName": "measure(Transaction_Stream__transaction_count)",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "displayName": "transaction_count"
+                },
+                "color": {
+                  "fieldName": "Transaction_Stream__is_international",
+                  "displayName": "is_international",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 6,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "bar_top_merchants",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "Transaction_Stream__merchant_name",
+                      "expression": "`Transaction_Stream`.`merchant_name`"
+                    },
+                    {
+                      "name": "measure(Transaction_Stream__transaction_count)",
+                      "expression": "MEASURE(`Transaction_Stream`.`transaction_count`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Top Merchants by Transaction Count"
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Transaction_Stream__merchant_name",
+                  "displayName": "merchant_name",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "measure(Transaction_Stream__transaction_count)",
+                  "displayName": "transaction_count",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "Transaction_Stream__merchant_name",
+                  "displayName": "merchant_name",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 12,
+            "width": 12,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "customer_risk",
+      "displayName": "Customer Risk Analysis",
+      "layout": [
+        {
+          "widget": {
+            "name": "bar_segments",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "Customer_Data__customer_segment",
+                      "expression": "`Customer_Data`.`customer_segment`"
+                    },
+                    {
+                      "name": "measure(Customer_Data__customer_count)",
+                      "expression": "MEASURE(`Customer_Data`.`customer_count`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Customer Segments Distribution"
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Customer_Data__customer_segment",
+                  "displayName": "customer_segment",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "measure(Customer_Data__customer_count)",
+                  "displayName": "customer_count",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "Customer_Data__customer_segment",
+                  "displayName": "customer_segment",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "bar_risk_score",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "Customer_Data__risk_score_bucket",
+                      "expression": "`Customer_Data`.`risk_score_bucket`"
+                    },
+                    {
+                      "name": "measure(Customer_Data__customer_count)",
+                      "expression": "MEASURE(`Customer_Data`.`customer_count`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Customer Risk Score Distribution"
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Customer_Data__risk_score_bucket",
+                  "displayName": "risk_score_bucket",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "measure(Customer_Data__customer_count)",
+                  "displayName": "customer_count",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "Customer_Data__risk_score_bucket",
+                  "displayName": "risk_score_bucket",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 0,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "bar_top_fraud_customers",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "Fraud_Card_Alerts__customer_name",
+                      "expression": "`Fraud_Card_Alerts`.`customer_name`"
+                    },
+                    {
+                      "name": "count(Fraud_Card_Alerts__alert_id)",
+                      "expression": "COUNT(`Fraud_Card_Alerts`.`alert_id`)"
+                    }
+                  ],
+                  "disaggregated": false,
+                  "orders": [
+                    {
+                      "direction": "DESC",
+                      "expression": "COUNT(`Fraud_Card_Alerts`.`alert_id`)"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "frame": {},
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Fraud_Card_Alerts__customer_name",
+                  "displayName": "Customer Name",
+                  "scale": {
+                    "type": "categorical",
+                    "categorySize": {
+                      "type": "number-of-categories",
+                      "number": 10
+                    },
+                    "sort": {
+                      "by": "measure-reversed",
+                      "measure": {
+                        "fieldName": "count(Fraud_Card_Alerts__alert_id)"
+                      }
+                    }
+                  }
+                },
+                "y": {
+                  "fieldName": "count(Fraud_Card_Alerts__alert_id)",
+                  "displayName": "Fraud Alert Count",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 6,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "scatter_age_risk",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "Customer_Data__age",
+                      "expression": "`Customer_Data`.`age`"
+                    },
+                    {
+                      "name": "Customer_Data__risk_score",
+                      "expression": "`Customer_Data`.`risk_score`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Customer Age vs Risk Score"
+              },
+              "version": 3,
+              "widgetType": "scatter",
+              "encodings": {
+                "x": {
+                  "fieldName": "Customer_Data__age",
+                  "displayName": "Age",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "Customer_Data__risk_score",
+                  "displayName": "Risk Score",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 12,
+            "width": 12,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "watchlist_alerts",
+      "displayName": "Watchlist & Alert Details",
+      "layout": [
+        {
+          "widget": {
+            "name": "bar_wl_risk_level",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "Fraud_Watchlist__risk_level",
+                      "expression": "`Fraud_Watchlist`.`risk_level`"
+                    },
+                    {
+                      "name": "measure(Fraud_Watchlist__watchlist_count)",
+                      "expression": "MEASURE(`Fraud_Watchlist`.`watchlist_count`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Watchlist by Risk Level"
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Fraud_Watchlist__risk_level",
+                  "displayName": "risk_level",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "measure(Fraud_Watchlist__watchlist_count)",
+                  "displayName": "watchlist_count",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "Fraud_Watchlist__risk_level",
+                  "displayName": "risk_level",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "pie_wl_type",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "measure(Fraud_Watchlist__watchlist_count)",
+                      "expression": "MEASURE(`Fraud_Watchlist`.`watchlist_count`)"
+                    },
+                    {
+                      "name": "Fraud_Watchlist__watch_type",
+                      "expression": "`Fraud_Watchlist`.`watch_type`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Watchlist by Watch Type"
+              },
+              "version": 3,
+              "widgetType": "pie",
+              "encodings": {
+                "angle": {
+                  "fieldName": "measure(Fraud_Watchlist__watchlist_count)",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "displayName": "watchlist_count"
+                },
+                "color": {
+                  "fieldName": "Fraud_Watchlist__watch_type",
+                  "displayName": "watch_type",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 0,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "table_fraud_alerts",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "Fraud_Card_Alerts__alert_id",
+                      "expression": "`Fraud_Card_Alerts`.`alert_id`"
+                    },
+                    {
+                      "name": "Fraud_Card_Alerts__alert_timestamp",
+                      "expression": "`Fraud_Card_Alerts`.`alert_timestamp`"
+                    },
+                    {
+                      "name": "Fraud_Card_Alerts__customer_name",
+                      "expression": "`Fraud_Card_Alerts`.`customer_name`"
+                    },
+                    {
+                      "name": "Fraud_Card_Alerts__amount",
+                      "expression": "`Fraud_Card_Alerts`.`amount`"
+                    },
+                    {
+                      "name": "Fraud_Card_Alerts__risk_level",
+                      "expression": "`Fraud_Card_Alerts`.`risk_level`"
+                    },
+                    {
+                      "name": "Fraud_Card_Alerts__merchant_name",
+                      "expression": "`Fraud_Card_Alerts`.`merchant_name`"
+                    },
+                    {
+                      "name": "Fraud_Card_Alerts__merchant_category",
+                      "expression": "`Fraud_Card_Alerts`.`merchant_category`"
+                    },
+                    {
+                      "name": "Fraud_Card_Alerts__payment_channel",
+                      "expression": "`Fraud_Card_Alerts`.`payment_channel`"
+                    },
+                    {
+                      "name": "Fraud_Card_Alerts__transaction_city",
+                      "expression": "`Fraud_Card_Alerts`.`transaction_city`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Fraud Alert Details"
+              },
+              "version": 2,
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "Fraud_Card_Alerts__alert_id"
+                  },
+                  {
+                    "fieldName": "Fraud_Card_Alerts__alert_timestamp"
+                  },
+                  {
+                    "fieldName": "Fraud_Card_Alerts__customer_name"
+                  },
+                  {
+                    "fieldName": "Fraud_Card_Alerts__amount"
+                  },
+                  {
+                    "fieldName": "Fraud_Card_Alerts__risk_level"
+                  },
+                  {
+                    "fieldName": "Fraud_Card_Alerts__merchant_name"
+                  },
+                  {
+                    "fieldName": "Fraud_Card_Alerts__merchant_category"
+                  },
+                  {
+                    "fieldName": "Fraud_Card_Alerts__payment_channel"
+                  },
+                  {
+                    "fieldName": "Fraud_Card_Alerts__transaction_city"
+                  }
+                ]
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 6,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "table_high_value",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "fields": [
+                    {
+                      "name": "High_Value_Transaction_Alerts__alert_id",
+                      "expression": "`High_Value_Transaction_Alerts`.`alert_id`"
+                    },
+                    {
+                      "name": "High_Value_Transaction_Alerts__alert_timestamp",
+                      "expression": "`High_Value_Transaction_Alerts`.`alert_timestamp`"
+                    },
+                    {
+                      "name": "High_Value_Transaction_Alerts__customer_name",
+                      "expression": "`High_Value_Transaction_Alerts`.`customer_name`"
+                    },
+                    {
+                      "name": "High_Value_Transaction_Alerts__transaction_amount",
+                      "expression": "`High_Value_Transaction_Alerts`.`transaction_amount`"
+                    },
+                    {
+                      "name": "High_Value_Transaction_Alerts__transaction_limit",
+                      "expression": "`High_Value_Transaction_Alerts`.`transaction_limit`"
+                    },
+                    {
+                      "name": "High_Value_Transaction_Alerts__currency",
+                      "expression": "`High_Value_Transaction_Alerts`.`currency`"
+                    },
+                    {
+                      "name": "High_Value_Transaction_Alerts__merchant_name",
+                      "expression": "`High_Value_Transaction_Alerts`.`merchant_name`"
+                    },
+                    {
+                      "name": "High_Value_Transaction_Alerts__merchant_category",
+                      "expression": "`High_Value_Transaction_Alerts`.`merchant_category`"
+                    },
+                    {
+                      "name": "High_Value_Transaction_Alerts__payment_channel",
+                      "expression": "`High_Value_Transaction_Alerts`.`payment_channel`"
+                    },
+                    {
+                      "name": "High_Value_Transaction_Alerts__city",
+                      "expression": "`High_Value_Transaction_Alerts`.`city`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "High-Value Alert Details"
+              },
+              "version": 2,
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "High_Value_Transaction_Alerts__alert_id"
+                  },
+                  {
+                    "fieldName": "High_Value_Transaction_Alerts__alert_timestamp"
+                  },
+                  {
+                    "fieldName": "High_Value_Transaction_Alerts__customer_name"
+                  },
+                  {
+                    "fieldName": "High_Value_Transaction_Alerts__transaction_amount"
+                  },
+                  {
+                    "fieldName": "High_Value_Transaction_Alerts__transaction_limit"
+                  },
+                  {
+                    "fieldName": "High_Value_Transaction_Alerts__currency"
+                  },
+                  {
+                    "fieldName": "High_Value_Transaction_Alerts__merchant_name"
+                  },
+                  {
+                    "fieldName": "High_Value_Transaction_Alerts__merchant_category"
+                  },
+                  {
+                    "fieldName": "High_Value_Transaction_Alerts__payment_channel"
+                  },
+                  {
+                    "fieldName": "High_Value_Transaction_Alerts__city"
+                  }
+                ]
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 12,
+            "width": 12,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "canvasBackgroundColor": {
+        "light": "#0D1117",
+        "dark": "#0D1117"
+      },
+      "widgetBackgroundColor": {
+        "light": "#161B22",
+        "dark": "#161B22"
+      },
+      "widgetBorderColor": {
+        "light": "#21262D",
+        "dark": "#21262D"
+      },
+      "fontColor": {
+        "light": "#E6EDF3",
+        "dark": "#E6EDF3"
+      },
+      "selectionColor": {
+        "light": "#FF6600",
+        "dark": "#FF6600"
+      },
+      "visualizationColors": [
+        "#FF4444",
+        "#FF8800",
+        "#FFAA00",
+        "#FF6600",
+        "#CC3300",
+        "#FF2200",
+        "#E67E22",
+        "#F39C12"
+      ],
+      "widgetHeaderAlignment": "LEFT",
+      "fontFamily": "Roboto Mono",
+      "widgetPadding": 16,
+      "widgetMargin": 4,
+      "widgetCornerRadius": 8,
+      "widgetShadow": 15,
+      "continuousGradient": {
+        "lightMode": {
+          "fromCategoricalIndex": 0
+        },
+        "darkMode": {
+          "fromCategoricalIndex": 0
+        }
+      },
+      "fontSettings": {
+        "base": {
+          "fontFamily": "Inter",
+          "fontColor": {
+            "light": "#E6EDF3",
+            "dark": "#E6EDF3"
+          },
+          "fontSize": 13,
+          "fontWeight": 400
+        },
+        "widgetTitle": {
+          "fontFamily": "Inter",
+          "fontSize": 14,
+          "fontWeight": 600
+        },
+        "widgetDescription": {
+          "fontSize": 13,
+          "fontWeight": 400
+        },
+        "fieldTitle": {
+          "textCase": "TEXT_CASE_UPPERCASE",
+          "fontColor": {
+            "light": "#5BB005",
+            "dark": "#5BB005"
+          },
+          "fontSize": 12,
+          "fontWeight": 400
+        },
+        "fieldValue": {
+          "fontColor": {
+            "light": "#5BB005",
+            "dark": "#5BB005"
+          },
+          "fontSize": 12,
+          "fontWeight": 400
+        }
+      },
+      "gridLineColor": {
+        "light": "#213310",
+        "dark": "#213310"
+      },
+      "axisLineColor": {
+        "light": "#2E4814",
+        "dark": "#2E4814"
+      },
+      "visualizationColorMappings": [
+        {
+          "value": "HIGH",
+          "color": "#FF0000"
+        },
+        {
+          "value": "MEDIUM",
+          "color": "#FF8800"
+        },
+        {
+          "value": "LOW",
+          "color": "#FFCC00"
+        }
+      ]
+    },
+    "applyModeEnabled": false
+  }
+}
